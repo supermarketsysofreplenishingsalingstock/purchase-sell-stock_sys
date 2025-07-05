@@ -16,7 +16,7 @@ class sys_of_RSSMyFrame1( sys_of_RSS.MyFrame1 ):
             'host': 'localhost',
             'user': 'root',
             'password': '1111',
-            'database': 'grocery_sys',
+            'database': 'grocery_sys_test',
             'charset': 'utf8mb4'
         }
 
@@ -35,7 +35,7 @@ class sys_of_RSSMyFrame1( sys_of_RSS.MyFrame1 ):
 			cursor = connection.cursor()
 			#k=-1##登录状态
 			try:
-				cursor.execute("SELECT password FROM employee WHERE name = %s", (login_name,))#避免注入风险
+				cursor.execute("SELECT password FROM employee_copy1 WHERE name = %s", (login_name,))#避免注入风险
 				real_password=cursor.fetchall()[0][0]
 				print(real_password)
 				if account_status=="not log in":#判断是否已经登录
@@ -46,7 +46,7 @@ class sys_of_RSSMyFrame1( sys_of_RSS.MyFrame1 ):
 						self.m_textCtrl12.SetValue("登录成功!")
 
 						#2025.06.10 #状态与身份
-						cursor.execute("SELECT place FROM employee WHERE name = %s", (login_name,))
+						cursor.execute("SELECT place FROM employee_copy1 WHERE name = %s", (login_name,))
 						getplace=cursor.fetchall()[0][0]
 						if getplace=="":
 							account_status="unknown"

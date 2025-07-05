@@ -775,7 +775,17 @@ class MyFrame6 ( wx.Frame ):
 
 		bSizer48.Add( bSizer44, 1, wx.EXPAND, 5 )
 
-		self.m_dataViewListCtrl1 = wx.dataview.DataViewListCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 1060,450 ), 0 )
+		#self.m_dataViewListCtrl1 = wx.dataview.DataViewListCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 1060,450 ), 0
+		#self.m_dataViewListCtrl1 = wx.dataview.DataViewListCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 1060,450 ), style=wx.dataview.DV_ROW_LINES) #20250703 增加示例中的每行的区分
+		# 在初始化时设置样式以启用行编辑  #KIMI# 2025.07.03
+		
+		self.m_dataViewListCtrl1 = wx.dataview.DataViewListCtrl(
+			self, wx.ID_ANY, 
+			wx.DefaultPosition, 
+			wx.Size(1060, 450), 
+			style=wx.dataview.DV_ROW_LINES | wx.dataview.DV_VERT_RULES #DV_VERT_RULES 才对
+		)
+
 		bSizer48.Add( self.m_dataViewListCtrl1, 0, wx.ALL, 5 )
 
 		bSizer45 = wx.BoxSizer( wx.HORIZONTAL )
